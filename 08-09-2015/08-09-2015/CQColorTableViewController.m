@@ -11,7 +11,7 @@
 #import "CQColorPickerViewController.h"
 
 @interface CQColorTableViewController ()
-@property (nonatomic) NSMutableArray *colors;
+
 
 @end
 
@@ -48,13 +48,47 @@
     // Return the number of rows in the section.
     return self.colors.count;
 }
-- (void)colorPickerViewController:(CQColorPickerViewController*)viewController didPickColor:(UIColor *)color {
-    [self.colors addObject:color];
-    NSLog(@"%lu", self.colors.count);
+- (void)colorPickerViewController:(CQColorPickerViewController*)viewController didPickColorNamed:(NSString *)colorName {
+    
+    NSDictionary *colorNames = @{
+                                 
+                                 @"black" : [UIColor blackColor],
+                                     @"white" : [UIColor whiteColor],
+                                     @"gray" : [UIColor grayColor],
+                                     @"red" : [UIColor redColor],
+                                     @"green" : [UIColor greenColor],
+                                     @"blue" : [UIColor blueColor],
+                                     @"cyan" : [UIColor cyanColor],
+                                     @"yellow" : [UIColor yellowColor],
+                                     @"magenta" : [UIColor magentaColor],
+                                     @"orange" : [UIColor orangeColor],
+                                     @"purple" : [UIColor purpleColor],
+                                     @"brown" :[UIColor brownColor]
+
+                                 };
+    NSArray *keys = [colorNames allKeys];
+    NSString *color = [colorName lowercaseString];
+    for (int i = 0; i < keys.count; i ++) {
+        if ([color isEqualToString:keys[i]]) {
+            [self.colors addObject:[colorNames objectForKey:keys[i]]];
+           
+        }
+    }
+    
+    
+    
     
     
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    CQColorPickerViewController *DVC = [segue destinationViewController];
+    DVC.delegate = self;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.colors removeObjectAtIndex:indexPath.row];
+    [self.tableView reloadData];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ColorCell" forIndexPath:indexPath];

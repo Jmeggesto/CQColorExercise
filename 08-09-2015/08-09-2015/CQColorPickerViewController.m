@@ -15,19 +15,19 @@
 
 @implementation CQColorPickerViewController
 - (IBAction)buttonTapped:(UIButton*)sender {
-    if ([sender.titleLabel.text isEqualToString:@"Red"]) {
-        [self.delegate colorPickerViewController:self didPickColor:[UIColor redColor]];
-    } else if ([sender.titleLabel.text isEqualToString:@"Blue"]) {
-        [self.delegate colorPickerViewController:self didPickColor:[UIColor blueColor]];
-    } else if ([sender.titleLabel.text isEqualToString:@"Green"])  {
-        [self.delegate colorPickerViewController:self didPickColor:[UIColor greenColor]];
-    } else if ([sender.titleLabel.text isEqualToString:@"Purple"]) {
-        [self.delegate colorPickerViewController:self didPickColor:[UIColor purpleColor]];
-    } else if ([sender.titleLabel.text isEqualToString:@"Yellow"]) {
-        [self.delegate colorPickerViewController:self didPickColor:[UIColor purpleColor]];
-    }
-        
-    
+//    if ([sender.titleLabel.text isEqualToString:@"Red"]) {
+//        [self.delegate colorPickerViewController:self didPickColor:[UIColor redColor]];
+//    } else if ([sender.titleLabel.text isEqualToString:@"Blue"]) {
+//        [self.delegate colorPickerViewController:self didPickColor:[UIColor blueColor]];
+//    } else if ([sender.titleLabel.text isEqualToString:@"Green"])  {
+//        [self.delegate colorPickerViewController:self didPickColor:[UIColor greenColor]];
+//    } else if ([sender.titleLabel.text isEqualToString:@"Purple"]) {
+//        [self.delegate colorPickerViewController:self didPickColor:[UIColor purpleColor]];
+//    } else if ([sender.titleLabel.text isEqualToString:@"Yellow"]) {
+//        [self.delegate colorPickerViewController:self didPickColor:[UIColor yellowColor]];
+//    }
+    [self.delegate colorPickerViewController:self didPickColorNamed:sender.titleLabel.text];
+    NSLog(@"%@", sender.titleLabel.text);
     
     
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -11,6 +11,6 @@
 @class CQColorPickerViewController;
 @protocol CQColorPickerViewControllerDelegate <NSObject>
 
-- (void)colorPickerViewController:(CQColorPickerViewController *)viewController didPickColor:(UIColor *)color;
+- (void)colorPickerViewController:(CQColorPickerViewController *)viewController didPickColorNamed:(NSString *)color;
 
 @end

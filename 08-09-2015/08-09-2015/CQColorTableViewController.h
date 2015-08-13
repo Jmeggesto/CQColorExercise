@@ -10,5 +10,5 @@
 #import "CQColorPickerViewControllerDelegate.h"
 
 @interface CQColorTableViewController : UITableViewController <CQColorPickerViewControllerDelegate>
-
+@property (strong, nonatomic) NSMutableArray *colors;
 @end
